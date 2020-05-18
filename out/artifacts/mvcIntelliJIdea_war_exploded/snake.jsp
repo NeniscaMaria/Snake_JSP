@@ -18,7 +18,7 @@
             box-shadow:0 0 20px #000;
         }
         h1 { font-family: 'Cabin Sketch', arial, serif; font-size:50px;
-            text-indent: -100px;margin-bottom:20;margin-top:30px;margin-right:1em;float:top}
+            text-indent: -100px;margin-bottom:20px;margin-top:30px;margin-left:1.5em}
     </style>
 <script src="snakeLogic.js"></script>
 </head>
