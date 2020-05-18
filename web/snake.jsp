@@ -11,10 +11,6 @@
     <script src="ajax-utils.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style type="text/css">
-        body {
-            background:#9c9;
-            text-align:center;
-        }
         canvas {
             background:#9c9;
             -webkit-box-shadow:0 0 20px #000;
@@ -22,12 +18,12 @@
             box-shadow:0 0 20px #000;
         }
         h1 { font-family: 'Cabin Sketch', arial, serif; font-size:50px;
-            text-indent: -100px;margin-bottom:20;margin-top:30px;float:top}
+            text-indent: -100px;margin-bottom:20;margin-top:30px;margin-right:1em;float:top}
     </style>
 <script src="snakeLogic.js"></script>
 </head>
 
-<body onload="init()">
+<body class='snake' onload="init()">
 <%
      User user = (User) request.getSession().getAttribute("username");
      if (user==null || user.getUsername().equals("")) {

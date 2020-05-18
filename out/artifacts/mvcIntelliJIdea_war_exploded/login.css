@@ -1,8 +1,8 @@
-input.login:hover{
+button.login:hover{
     color: darkolivegreen;
     background-color: #CFD8DC;
 }
-input.login{
+button.login{
     width:15%;
     margin-top: 1em;
     border-radius: 8px;
@@ -11,4 +11,9 @@ input.login{
     border: 2px solid #e7e7e7;
     padding: 0.5em;
     float: left;
+}
+
+body {
+    background:#9c9;
+    text-align:center;
 }

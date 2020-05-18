@@ -1,11 +1,40 @@
 button.logout{
     float:right;
-    margin-top:-10em;
     border-radius: 8px;
-    border-color: #1A3602;
+    border-color: black;
+    margin-right: 1em;
 }
 
 body {
-    background:#9c9;
-    text-align:center;
+     background:#9c9;
+}
+
+body.snake{
+    text-align: center;
+}
+
+button:hover{
+    color: darkolivegreen;
+    background-color: #CFD8DC;
+}
+button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+div{
+    margin-top:25%;
+    margin-left: 40%;
+}
+
+div.input{
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 0%;
 }

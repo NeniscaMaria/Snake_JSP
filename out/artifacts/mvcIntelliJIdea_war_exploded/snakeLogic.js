@@ -5,8 +5,8 @@ function init() {
     var xV = [-1, 0, 1, 0];
     var yV = [0, -1, 0, 1];
     var queue = [];
-    var elements = 1;
-    var map = [];
+    var snakeLength = 1;
+    var board = [];
     //initialize first position of the snake
     var X = 5 + (Math.random() * (45 - 10))|0;
     var Y = 5 + (Math.random() * (30 - 10))|0;
@@ -18,7 +18,7 @@ function init() {
     //adding the canvas to the document
     var canvas = document.createElement('canvas');
     for (var i = 0; i < 45; i++) {
-        map[i] = [];
+        board[i] = [];
     }
     canvas.setAttribute('width', '450');
     canvas.setAttribute('height', '300');
@@ -32,9 +32,9 @@ function init() {
         do {
             x = Math.random() * 45|0;
             y = Math.random() * 30|0;
-        } while (map[x][y]);
+        } while (board[x][y]);
         //mark the spot on the board
-        map[x][y] = 1;
+        board[x][y] = 1;
         //placing the food on the canvas
         ctx.fillRect(x * 10 + 1, y * 10 + 1, 10 - 2, 10 - 2);
     }
@@ -46,9 +46,9 @@ function init() {
             do {
                 x = Math.random() * 45 | 0;
                 y = Math.random() * 30 | 0;
-            } while (map[x][y]);
+            } while (board[x][y]);
             //mark the obstacle on the board
-            map[x][y] = 2;
+            board[x][y] = 2;
             //placing the obstacle on the canvas
             ctx.strokeRect(x * 10 + 1, y * 10 + 1, 10 -1, 10 - 1);
         }
@@ -63,24 +63,24 @@ function init() {
                 direction = dir;
             }
         }
-        if (((0 <= X && 0 <= Y && X < 45 && Y < 30)) && 2 !== map[X][Y]) { //check if the position is valid
-            if (1 === map[X][Y]) { //means that it caught a piece of food
+        if (((0 <= X && 0 <= Y && X < 45 && Y < 30)) && 2 !== board[X][Y]) { //check if the position is valid
+            if (1 === board[X][Y]) { //means that it caught a piece of food
                 score+= 5;
                 placeFood();
-                elements++; //the length of the snake increases
+                snakeLength++; //the length of the snake increases
             }
             ctx.fillRect(X * 10, Y * 10, 10 - 1, 10 - 1);
             //mark the position of the snake on the matrix
-            map[X][Y] = 2;
-            //add new position to the end of the queue
+            board[X][Y] = 2;
             queue.unshift([X, Y]);
 
+            //update new position of the head of the snake
             X+= xV[direction];
             Y+= yV[direction];
 
-            if (elements < queue.length) {
+            if (snakeLength < queue.length) {
                 dir = queue.pop()
-                map[dir[0]][dir[1]] = 0;
+                board[dir[0]][dir[1]] = 0;
                 ctx.clearRect(dir[0] * 10, dir[1] * 10, 10, 10);
             }
 
@@ -89,14 +89,14 @@ function init() {
                 //reinitialize the board
                 ctx.clearRect(0, 0, 450, 300);
                 queue = [];
-                elements = 1;
-                map = [];
+                snakeLength = 1;
+                board = [];
                 X = 5 + (Math.random() * (45 - 10))|0;
                 Y = 5 + (Math.random() * (30 - 10))|0;
                 direction = Math.random() * 3 | 0;
                 score = 0;
                 for (i = 0; i < 45; i++) {
-                    map[i] = [];
+                    board[i] = [];
                 }
                 placeFood();
                 generateObstacles();

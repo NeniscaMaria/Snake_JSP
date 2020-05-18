@@ -5,10 +5,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="login.css" rel="stylesheet" type="text/css">
+    <link href="snake.css" rel="stylesheet" type="text/css">
     <title>Snake</title>
 </head>
-<body>
+<body class="login">
 <%
     if(session.getAttribute("username")!=null){
         DBManager dbManager = new DBManager();
@@ -16,9 +16,15 @@
         session.invalidate();
     }
 %>
+<div>
 <form action="LoginController" method="post">
-    Username <br><input type="text" name="username"> <BR>
-    Password <br> <input type="password" name="password"> <BR>
-    <input class = 'login' type="submit" value="Login"/>
+    Username <br>
+    <div class="input">
+    <input type="text" name="username"> <BR></div>
+    Password <br>
+    <div class="input">
+    <input type="password" name="password"> <BR></div>
+    <button class = 'login' type="submit" value="Login">Login</button>
 </form>
+</div>
 </body></html>
