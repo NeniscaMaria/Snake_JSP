@@ -1,0 +1,11 @@
+button.logout{
+    float:right;
+    margin-top:-10em;
+    border-radius: 8px;
+    border-color: #1A3602;
+}
+
+body {
+    background:#9c9;
+    text-align:center;
+}
